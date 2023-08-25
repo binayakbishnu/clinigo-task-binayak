@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 
 function Wrapper() {
     return (
-        <div>
+        <div className='flex flex-col justify-start items-stretch h-[100vh]'>
             <Navbar />
 
             <Outlet />
