@@ -140,7 +140,7 @@ function Dashboard() {
             await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${'079f46de460e5a2e043e8f5911cd10e6'}`
             ).then(res => {
                 setReceivedOutput(res.data);
-                // resetInputs();
+                resetInputs();
             }).catch(err => {
                 setError(true);
                 setErrorMessage(`Please check the city name (you entered "${city}")`);
@@ -223,33 +223,41 @@ function Dashboard() {
     return (
         <div className='flex-1 p-2 text-white relative'>
             <div className='mainContent flex flex-col items-stretch justify-start h-full'>
-                <div className={`inputDiv`}>
-                    <form ref={formInput} action="/sendCityName" onSubmit={submitCity} className={`lg:w-[30%] m-auto flex flex-row gap-5 justify-between items-center`}>
-                        <input onChange={(e) => setCity(e.target.value)} type="text" list="cities"
-                            placeholder='Start typing...' ref={cityInput}
-                            className={`bg-[rgba(0,0,0,0)] px-6 py-4 border border-white rounded-xl`} />
-                        <datalist id="cities">
-                            {
-                                cities.map((city, cityID) => {
-                                    return <option key={cityID} value={city} />
-                                })
-                            }
-                        </datalist>
+                <div className={`inputDiv w-full m-auto`}>
+                    <form ref={formInput} action="/sendCityName" onSubmit={submitCity} className={`lg:w-[30%] m-auto flex flex-row gap-5 justify-between items-start`}>
+                        <div>
+                            <input onChange={(e) => setCity(e.target.value)} type="text" list="cities"
+                                placeholder='Start typing...' ref={cityInput}
+                                className={`bg-[rgba(0,0,0,0)] px-6 py-4 border border-white rounded-xl`} />
+                            <datalist id="cities">
+                                {
+                                    cities.map((city, cityID) => {
+                                        return <option key={cityID} value={city} />
+                                    })
+                                }
+                            </datalist>
+                        </div>
 
                         <input type="submit" value="Submit"
-                            className={`bg-[rgba(0,0,200,1.0)] p-4 px-6 rounded-xl cursor-pointer`} />
+                            className={`transition ease-in-out duration-600 bg-[rgba(0,0,0,0)] hover:bg-white p-4 px-6 rounded-xl
+                            border border-white cursor-pointer hover:text-black`} />
                     </form>
+                    {
+                        // error &&
+                        <p className={`${error ? 'text-red-500' : 'text-[rgba(0,0,0,0)]'} m-auto w-fit`}
+                        >{errorMessage}</p>
+                    }
                 </div>
 
                 <div className={`outputDiv flex-1 flex lg:flex-col items-stretch justify-start`}>
                     {/* <p className='text-white'>sent: {city}</p> */}
 
                     {/* error */}
-                    {
+                    {/* {
                         // error &&
                         <p className={`${error ? 'text-red-500' : 'text-[rgba(0,0,0,0)]'}`}
                         >{errorMessage}</p>
-                    }
+                    } */}
 
                     {/* temperature */}
                     <div className='flex flex-row lg:flex-col items-center justify-between mt-4 px-6 lg:px-2 py-4 lg:pb-1 bg-white bg-opacity-10 backdrop-blur-lg w-full lg:w-[20%] m-auto rounded-xl'>
