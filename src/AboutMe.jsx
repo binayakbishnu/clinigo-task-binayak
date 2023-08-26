@@ -35,7 +35,7 @@ function AboutMe() {
             <div className='absolute right-4 bottom-4'>
                 <Link
                     to="/"
-                    className='bg-[rgba(0,0,100,1.0)] p-4 rounded-xl flex flex-row items-center justify-center cursor-pointer text-white font-bold'
+                    className='bg-white bg-opacity-10 backdrop-blur-lg p-4 rounded-xl flex flex-row items-center justify-center cursor-pointer text-white font-bold'
                 >Go Back</Link>
             </div>
         </div>

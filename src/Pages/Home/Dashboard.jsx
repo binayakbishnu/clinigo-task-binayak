@@ -343,13 +343,6 @@ function Dashboard() {
                     </div>
                 </div>
             </div>
-
-            <div className='absolute right-4 bottom-4'>
-                <Link
-                    to="/aboutme"
-                    className='bg-[rgba(0,0,100,1.0)] p-4 rounded-xl flex flex-row items-center justify-center cursor-pointer text-white font-bold'
-                >About Me</Link>
-            </div>
         </div >
     )
 }
