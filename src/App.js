@@ -3,7 +3,7 @@ import './App.css';
 import Wrapper from './Wrapper';
 import Dashboard from './Pages/Home/Dashboard';
 import About from './Pages/Home/About';
-import AboutMe from './Pages/Other/AboutMe';
+import AboutMe from './AboutMe';
 
 function App() {
   return (
