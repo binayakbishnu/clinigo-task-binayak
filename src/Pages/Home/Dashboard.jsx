@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import cityBackground from '../../assets/city-bg.jpg'
 import { CiLocationArrow1 } from 'react-icons/ci'
 
 import axios from 'axios';
@@ -67,7 +66,7 @@ function Dashboard() {
         // "Kazan",
     ]
 
-    const descriptions = [
+    /* const descriptions = [
         "clear sky",
         "few clouds",
         "scattered clouds",
@@ -88,7 +87,7 @@ function Dashboard() {
         "heavy thunderstorm",
         "showers",
         "snow showers",
-    ]
+    ] */
 
     const submitCity = async (e) => {
         e.preventDefault();
@@ -146,7 +145,6 @@ function Dashboard() {
                 setError(true);
                 setErrorMessage(`Please check the city name (you entered "${city}")`);
                 // console.warn(`Error: ${err.message}`);
-                setError(err.message);
             }).finally(() => {
                 // console.log(`axios successfully completed`);
             });
@@ -223,11 +221,7 @@ function Dashboard() {
     }, [receivedOutput]);
 
     return (
-        <div className='flex-1 p-2 bg-[rgba(0,0,25,1.0)] text-white relative'
-            style={{
-                backgroundImage: `url('${cityBackground}')`,
-                height: `400px`
-            }}>
+        <div className='flex-1 p-2 text-white relative'>
             <div className='mainContent flex flex-col items-stretch justify-start h-full'>
                 <div className={`inputDiv`}>
                     <form ref={formInput} action="/sendCityName" onSubmit={submitCity} className={`lg:w-[30%] m-auto flex flex-row gap-5 justify-between items-center`}>
