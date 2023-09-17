@@ -5,19 +5,19 @@ import { Link } from 'react-router-dom'
 
 function AboutMe() {
     return (
-        <div className='flex flex-col justify-center items-stretch h-[100vh] relative text-white'
+        <div className='px-2 flex flex-col justify-center items-center h-[100vh] text-white gap-5'
             style={{
                 backgroundImage: `url('${cityBackground}')`,
                 // height: `400px`
             }}
         >
-            <div className={`mt-8 text-justify p-10 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl lg:w-[80%] m-auto h-[70vh] overflow-y-scroll`}>
+            <div className={`h-[70vh] sm:h-auto mt-8 text-justify p-5 sm:p-10 bg-white bg-opacity-10 backdrop-blur-lg rounded-lg sm:rounded-xl lg:w-[80%] m-auto overflow-y-scroll`}>
                 <p>I am Binayak Bishnu.</p>
-                <p>
+                {/* <p>
                     Check out my website: <a className='underline'
                         href="https://binayakbishnu.web.app" target='_blank' rel="noopener noreferrer">
                         https://binayakbishnu.web.app</a>
-                </p>
+                </p> */}
                 <br />
                 <p>I am an undergraduate student pursuing BTech in IT looking for internship roles to improve my skills and gain industry experience.</p>
                 <p>I have skills relevant to frontend web development like HTML, CSS, JS, ReactJs, NodeJs, and JSON having developed 2 full stack websites and 1 portfolio website and having worked with 3 startups to build their websites. In my latest internship under eZ, I was the tech lead wherein I was put in charge of the frontend team and of maintaining the repo. I extensively made use of version control and debugging. Moreover, I learnt to coordinate and work as a team at a production level work, and mentor juniors in creating maintainable code.</p>
@@ -32,7 +32,22 @@ function AboutMe() {
                 <br /><p>Thank you.</p>
             </div>
 
-            <div className='absolute right-4 bottom-4'>
+            <div className='flex gap-2'>
+                <a target='blank_' href="https://binayakbishnu.web.app"
+                    className='p-5 rounded-ss-xl bg-white bg-opacity-10 backdrop-blur-lg'>
+                    <button>Website</button>
+                </a>
+                <a target='blank_' href="https://www.linkedin.com/in/binayakbishnu"
+                    className='p-5 bg-white bg-opacity-10 backdrop-blur-lg'>
+                    <button>LinkedIn</button>
+                </a>
+                <a target='blank_' href="https://medium.com/@binayakbishnu"
+                    className='p-5 rounded-se-xl bg-white bg-opacity-10 backdrop-blur-lg'>
+                    <button>Medium</button>
+                </a>
+            </div>
+
+            <div className='absolute right-4 bottom-[12vh] sm:bottom-4'>
                 <Link
                     to="/"
                     className='bg-white bg-opacity-10 backdrop-blur-lg p-4 rounded-xl flex flex-row items-center justify-center cursor-pointer text-white font-bold'
