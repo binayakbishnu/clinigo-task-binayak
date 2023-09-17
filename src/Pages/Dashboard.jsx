@@ -223,8 +223,8 @@ function Dashboard() {
     return (
         <div className='flex-1 p-2 text-white relative'>
             <div className='mainContent flex flex-col items-stretch justify-start h-full'>
-                <div className={`inputDiv w-full m-auto`}>
-                    <form ref={formInput} action="/sendCityName" onSubmit={submitCity} className={`lg:w-[30%] m-auto flex flex-row gap-5 justify-between items-start`}>
+                <div className={`inputDiv w-fit m-auto`}>
+                    <form ref={formInput} action="/sendCityName" onSubmit={submitCity} className={`m-auto flex flex-row gap-5 justify-between items-start`}>
                         <div>
                             <input onChange={(e) => setCity(e.target.value)} type="text" list="cities"
                                 placeholder='Start typing...' ref={cityInput}
@@ -249,7 +249,7 @@ function Dashboard() {
                     }
                 </div>
 
-                <div className={`outputDiv flex-1 flex lg:flex-col items-stretch justify-start`}>
+                <div className={`outputDiv flex-1 flex flex-col items-stretch justify-start`}>
                     {/* <p className='text-white'>sent: {city}</p> */}
 
                     {/* error */}
@@ -260,13 +260,16 @@ function Dashboard() {
                     } */}
 
                     {/* temperature */}
-                    <div className='flex flex-row lg:flex-col items-center justify-between mt-4 px-6 lg:px-2 py-4 lg:pb-1 bg-white bg-opacity-10 backdrop-blur-lg w-full lg:w-[20%] m-auto rounded-xl'>
-                        <h1 className={`relative text-4xl lg:text-3xl ${weatherDetails ? 'text-white' : 'text-[rgba(0,0,0,0)]'}`}>
-                            {weatherDetails ? weatherDetails.currentTemperature : 99}&deg;C
+                    <div className='gap-2 lg:gap-0 flex flex-row lg:flex-col items-center justify-between mt-4 px-6 lg:px-2 py-4 lg:pb-1 bg-white bg-opacity-10 backdrop-blur-lg lg:w-[20%] m-auto rounded-xl'>
+                        <div className={`relative ${weatherDetails ? 'text-white' : 'text-[rgba(0,0,0,0)]'}`}>
+                            <h1 className=' text-4xl lg:text-3xl'>{weatherDetails ? weatherDetails.currentTemperature : 99}&deg;C</h1>
                             {/* <img className={`hidden lg:block`} src={weatherDetails?.icon} alt="" /> */}
-                        </h1>
+                            <p className={`block lg:hidden p-0 m-0 ${weatherDetails ? 'text-white' : 'text-[rgba(0,0,0,0)]'}`}>
+                                Feels like: {weatherDetails ? weatherDetails.feelsLike : 99}&deg;C
+                            </p>
+                        </div>
                         <div className='flex flex-col items-end lg:items-center justify-start'>
-                            <p className={`p-0 m-0 ${weatherDetails ? 'text-white' : 'text-[rgba(0,0,0,0)]'}`}>
+                            <p className={`hidden lg:block p-0 m-0 ${weatherDetails ? 'text-white' : 'text-[rgba(0,0,0,0)]'}`}>
                                 Feels like: {weatherDetails ? weatherDetails.feelsLike : 99}&deg;C
                             </p>
                             <p className={`p-0 m-0 lg:mt-2 text-gray-400`}>{weatherDetails ? weatherDetails.city : "City"}</p>
@@ -274,24 +277,26 @@ function Dashboard() {
                     </div>
 
                     {/* other details */}
-                    <div className={`mt-4 flex-1 flex lg:flex-row justify-between items-start`}>
+                    <div className={`mt-4 flex-1 flex flex-col sm:flex-row sm:justify-between items-start gap-5 sm:gap-0`}>
                         {/* left side */}
-                        <div className={`flex lg:flex-col items-stretch justify-start gap-5 w-[20%]`}>
-                            <div className={`px-6 lg:px-4 py-4 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl text-left`}>
+                        <div className={`flex sm:flex-col items-stretch justify-start gap-5 w-full sm:w-[20%]`}>
+                            <div className={`px-4 py-4 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl text-left w-full sm:W-auto`}>
                                 <p className={`flex flex-row items-center justify-between`}>
                                     {weatherDetails ? weatherDetails.description : "Haze"}
                                     <img className={``} src={weatherDetails?.icon} width="40px" alt="" />
                                 </p>
                             </div>
-                            <div className={`px-6 lg:px-4 py-4 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl text-left`}>
+                            <div className={`px-4 py-4 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl text-left w-full sm:W-auto`}>
+                                <p className='md:hidden text-[0.8em] p-0 m-0 text-center'>Wind speeds</p>
                                 <div className={`flex flex-row items-center justify-between`}>
                                     <p className={`p-0 m-0`}>
-                                        <span className={`text-[0.8em]`}>Wind speed </span><br />
+                                        <span className={`hidden md:inline text-[0.8em]`}>Wind speed </span>
+                                        <br className='hidden md:block' />
                                         {weatherDetails ? weatherDetails.windSpeed : "999.99"}
                                     </p>
                                     <div className={`flex flex-col items-center justify-start`}>
                                         <CiLocationArrow1
-                                            className={`rotate-[${weatherDetails?.windDirectionIcon}deg]`}
+                                            className={`hidden lg:block rotate-[${weatherDetails?.windDirectionIcon}deg]`}
                                         />
                                         <p className='p-0 m-0 text-[0.8em]'>
                                             {weatherDetails?.windDirection}&deg;
@@ -299,24 +304,10 @@ function Dashboard() {
                                     </div>
                                 </div>
                             </div>
-                            {/* <div className={`px-6 lg:px-4 py-4 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl text-left`}>
-                                <p className={`flex flex-row items-center justify-between`}>
-                                    <span>
-                                        Humidity: </span>
-                                    {weatherDetails ? weatherDetails.humidity : "100"}%
-                                </p>
-                            </div>
-                            <div className={`px-6 lg:px-4 py-4 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl text-left`}>
-                                <p className={`flex flex-row items-center justify-between`}>
-                                    <span>
-                                        Visibility: </span>
-                                    {weatherDetails ? weatherDetails.visibility : "99999"}
-                                </p>
-                            </div> */}
                         </div>
 
                         {/* center */}
-                        <div className={`flex flex-col items-center justify-between px-6 lg:px-4 py-4 pt-1 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl text-left`}>
+                        <div className={`hidden sm:flex flex-col items-center justify-between px-4 py-4 pt-1 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl text-left`}>
                             <p className={`text-[0.8em] text-gray-400 mb-2`}>Recorded at</p>
                             <p>
                                 {weatherDetails?.timezone.getHours()}:{weatherDetails?.timezone.getMinutes()}:{weatherDetails?.timezone.getSeconds()}  (GMT{(weatherDetails?.timezone.getTimezoneOffset()) / 60})
@@ -325,14 +316,14 @@ function Dashboard() {
                         </div>
 
                         {/* right side */}
-                        <div className={`flex lg:flex-col items-stretch justify-start gap-5 w-[20%]`}>
-                            <div className={`px-6 lg:px-4 py-4 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl text-left`}>
+                        <div className={`flex sm:flex-col items-stretch justify-start gap-5 w-full sm:w-[20%]`}>
+                            <div className={`px-4 py-4 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl text-left w-full sm:w-auto`}>
                                 <p className={`flex flex-row items-center justify-between`}>
                                     <span>Humidity: </span>
                                     {weatherDetails ? weatherDetails.humidity : "100"}%
                                 </p>
                             </div>
-                            <div className={`px-6 lg:px-4 py-4 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl text-left`}>
+                            <div className={`px-4 py-4 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl text-left w-full sm:w-auto`}>
                                 <p className={`flex flex-row items-center justify-between`}>
                                     <span>
                                         Visibility: </span>
