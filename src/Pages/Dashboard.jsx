@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 
 import { CiLocationArrow1 } from 'react-icons/ci'
 
@@ -25,10 +24,10 @@ function Dashboard() {
         "Birmingham",
         // "Liverpool",
         "New York City",
-        "Los Angeles",
+        // "Los Angeles",
         // "Chicago",
         // "Miami",
-        "San Francisco",
+        // "San Francisco",
         "Paris",
         // "Marseille",
         // "Lyon",
@@ -40,17 +39,17 @@ function Dashboard() {
         // "Sapporo",
         // "Hiroshima",
         "Sydney",
-        "Melbourne",
+        // "Melbourne",
         // "Brisbane",
         // "Perth",
         // "Adelaide",
-        "Berlin",
-        "Munich",
+        // "Berlin",
+        // "Munich",
         // "Hamburg",
         // "Frankfurt",
         // "Cologne",
         "Beijing",
-        "Shanghai",
+        // "Shanghai",
         // "Guangzhou",
         // "Chengdu",
         // "Xi'an",
