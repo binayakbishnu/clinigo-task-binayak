@@ -16,7 +16,7 @@ function Wrapper() {
 
             <Outlet />
 
-            <div className='absolute right-4 bottom-4'>
+            <div className='absolute right-4 bottom-[12vh] sm:bottom-4'>
                 <Link
                     to="/aboutme"
                     className='bg-white bg-opacity-10 backdrop-blur-lg p-4 rounded-xl flex flex-row items-center justify-center cursor-pointer text-white font-bold'
